@@ -23,7 +23,7 @@ const Home = ({ posts }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const query = `*[_type=="post"]{
+  const query = `*[_type=="post"] | order(publishedAt desc){
   _id,title,slug,imageTitle,excerpt,categories,mainImage,publishedAt,
   author->{
   name,image

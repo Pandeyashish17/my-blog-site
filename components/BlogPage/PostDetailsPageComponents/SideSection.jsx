@@ -50,25 +50,7 @@ const SideSection = ({ categories }) => {
           <h3 className="text-3xl text-coolGray-900 font-bold mb-6">
             Popular Posts
           </h3>
-          <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
-            <div className="card-recent-image w-24 h-24 rounded overflow-hidden flex-shrink-0">
-              <img
-                className="w-full h-full object-cover"
-                src="assets/images/blog/2.jpg"
-                alt="title"
-              />
-            </div>
-            <div className="card-recent-content pl-4">
-              <h6 className="text-coolGray-900 font-bold transition duration-500 hover:text-teal-400">
-                <a href="single.html">
-                  Honoring Black History Month with Toddlers
-                </a>
-              </h6>
-              <p className="text-sm text-coolGray-300 font-normal mt-1">
-                22 July, 2021
-              </p>
-            </div>
-          </div>
+         
           <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
             <div className="card-recent-image w-24 h-24 rounded overflow-hidden flex-shrink-0">
               <img

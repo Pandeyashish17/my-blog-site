@@ -17,14 +17,16 @@ const serializers = {
       <>
         <pre
           data-language={props.node.language}
-          className="bg-[#00002c] my-3 p-3"
+          className="bg-[#00002c] my-3 p-3 lg:col-span-7 xl:col-span-8 rounded-xl"
         >
           <div className="flex gap-1 mb-2 ml-1 ">
-          <div className="bg-red-500 w-3 h-3 rounded-full "></div>{" "}
-          <div className="bg-yellow-500 w-3 h-3 rounded-full "></div>{" "}
-          <div className="bg-green-500 w-3 h-3 rounded-full "></div>{" "}
+            <div className="bg-red-500 w-3 h-3 rounded-full "></div>{" "}
+            <div className="bg-yellow-500 w-3 h-3 rounded-full "></div>{" "}
+            <div className="bg-green-500 w-3 h-3 rounded-full "></div>{" "}
           </div>
-          <code className=" text-white  ">{props.node.code}</code>
+          <code className=" text-white w-[50%] ">
+            {props.node.code}
+          </code>
         </pre>
       </>
     ),

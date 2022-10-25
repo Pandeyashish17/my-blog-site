@@ -4,8 +4,10 @@ import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import TimeAgo from "react-timeago";
+import { urlFor } from "../../lib/sanityConfig";
 
 export default function App({ posts }) {
+  const Posts = posts.slice(0,4)
   return (
     <>
       <div className="mt-8">
@@ -32,7 +34,7 @@ export default function App({ posts }) {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {posts.map((items, i) => {
+          {Posts.map((items, i) => {
             const {
               _id,
               title,
@@ -51,7 +53,7 @@ export default function App({ posts }) {
                       {mainImage ? (
                         <img
                           className="max-w-full w-full mx-auto h-auto"
-                          src={`/api/image?title=image is there`}
+                          src={urlFor(mainImage).url()}
                           alt="Image description"
                         />
                       ) : (
@@ -75,7 +77,11 @@ export default function App({ posts }) {
                         <div className="text-gray-100">
                           <div className="inline-block h-3 border-l-2 border-red-600 mr-2"></div>
                           {categories.map((category, i) => {
-                            return <span className="m-1" key={i}>{category}</span>;
+                            return (
+                              <span className="m-1" key={i}>
+                                {category}
+                              </span>
+                            );
                           })}
                         </div>
                         <div>

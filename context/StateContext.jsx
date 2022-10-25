@@ -4,7 +4,7 @@ import AOS from "aos";
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
-  const url = "something"
+  const url = "https://ashishblog.vercel.app/";
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
   const aosFunc = () => {
