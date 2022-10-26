@@ -35,7 +35,7 @@ const SideSection = ({ categories }) => {
         <div className="bg-white rounded border border-coolGray-300 transition duration-500 hover:shadow-lg px-6 py-8 mb-6 lg:mb-14">
           <h3 className="text-3xl text-coolGray-900 font-bold mb-3">Tags</h3>
           <div className="card-tags-list flex flex-wrap">
-            {categories.map((category, i) => {
+            {categories&&categories.map((category, i) => {
               return (
                 <Link href={`/blogs?query=${category}`} key={i}>
                   <a className="btn-style-2 inline-flex items-center justify-center border  border-coolGray-300 text-coolGray-600 font-medium rounded-full transition-all duration-500 hover:text-teal-400 hover:border-teal-400 py-2.5 px-7 mr-4 mt-4">
@@ -51,7 +51,7 @@ const SideSection = ({ categories }) => {
             Popular Posts
           </h3>
          
-          <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
+          {/* <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
             <div className="card-recent-image w-24 h-24 rounded overflow-hidden flex-shrink-0">
               <img
                 className="w-full h-full object-cover"
@@ -124,7 +124,7 @@ const SideSection = ({ categories }) => {
                 22 July, 2021
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
