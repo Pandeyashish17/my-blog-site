@@ -25,7 +25,7 @@ export default function PostCard({ post }) {
             {mainImage ? (
               <img
                 className="w-full h-48 2xl:h-64 object-cover rounded mb-6"
-                src="/size.png"
+                src={urlFor(mainImage).url()}
                 alt="Blog Title"
               />
             ) : (
