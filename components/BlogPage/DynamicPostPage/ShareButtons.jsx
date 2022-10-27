@@ -21,8 +21,8 @@ const ShareButtons = ({path}) => {
   return (
     <>
       {" "}
-      <div class="social-share flex items-center gap-2 mb-4">
-        <span class="text-coolGray-900 font-bold text-sm mr-1">SHARE</span>
+      <div className="social-share flex items-center gap-2 mb-4">
+        <span className="text-coolGray-900 font-bold text-sm mr-1">SHARE</span>
 
         <FacebookShareButton url={`${url}/${path}`}>
           <FacebookIcon size={28} round={true} />
