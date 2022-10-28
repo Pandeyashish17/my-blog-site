@@ -60,7 +60,7 @@ export const getStaticProps = async ({ params }) => {
   });
 
   const query2 = `*[_type=="post"] | order(publishedAt desc) [0...5]{
-    _id,title,slug,mainImage,publishedAt,
+    _id,title,slug,mainImage,imageTitle,publishedAt,
 
   }`;
 

@@ -55,16 +55,24 @@ const SideSection = ({ categories, posts }) => {
 
           {posts &&
             posts.map((post) => {
-              const { slug, title, mainImage, publishedAt } = post;
+              const { slug, title, mainImage, publishedAt, imageTitle } = post;
               return (
                 <Link href={`/blogs/${slug.current}`} key={title}>
                   <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
                     <div className="card-recent-image w-24 h-24 rounded overflow-hidden flex-shrink-0">
-                      <img
-                        className="w-full  h-full object-cover"
-                        src={urlFor(mainImage).url()}
-                        alt={title}
-                      />
+                      {mainImage ? (
+                        <img
+                          className="w-full  h-full object-cover"
+                          src={urlFor(mainImage).url()}
+                          alt={title}
+                        />
+                      ) : (
+                        <img
+                          className="w-full  h-full object-cover"
+                          src={`/api/image?title=${imageTitle}`}
+                          alt={title}
+                        />
+                      )}
                     </div>
                     <div className="card-recent-content pl-4">
                       <h6 className="text-coolGray-900 font-bold transition duration-500 hover:text-teal-400">

@@ -3,7 +3,7 @@ import RecentPosts from "../components/RecentPosts";
 import { sanityClient } from "../lib/sanityConfig";
 import useStateContext from "../context/StateContext";
 import { useEffect } from "react";
-
+import Head from "next/head";
 const Home = ({ posts }) => {
   const { aosFunc } = useStateContext();
   useEffect(() => {
@@ -12,6 +12,9 @@ const Home = ({ posts }) => {
 
   return (
     <>
+      <Head>
+        <title>Home - ashishBlog</title>
+      </Head>
       <div className="p-5" data-aos="zoom-in">
         <TopSlider posts={posts} />
         <RecentPosts posts={posts} />
