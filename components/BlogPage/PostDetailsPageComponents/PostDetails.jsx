@@ -26,7 +26,7 @@ const serializers = {
             </div>
             <div>
               <BiCopyAlt
-                className="w-6 h-6 text-white cursor-pointer"
+                className="w-6 h-6 text-white cursor-pointer hover:scale-105"
                 onClick={() => {
                   navigator.clipboard.writeText(props.node.code);
                 }}
