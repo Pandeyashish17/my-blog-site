@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState } from "react";
-import useStateContext from "../../../context/StateContext";
 import NavBarData from "./NavbarData";
 import SearchBar from "../../SearchBar";
 export default function NavBar() {
@@ -65,7 +64,7 @@ export default function NavBar() {
                 return (
                   <Link href={path} key={name}>
                     <li className="text-gray-600 hover:text-blue-600 cursor-pointer">
-                      <a>{name}</a>
+                      <button onClick={() => setNavbar(!navbar)}>{name}</button>
                     </li>
                   </Link>
                 );

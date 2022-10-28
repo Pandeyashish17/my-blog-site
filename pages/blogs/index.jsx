@@ -17,7 +17,6 @@ const Index = ({ posts }) => {
   if (!query) {
     query = "Blog";
   }
-  console.log(posts);
   const Posts = posts.filter((post) => {
     return query == "Blog"
       ? post
@@ -57,32 +56,28 @@ const Index = ({ posts }) => {
               </span>
               <div className="block xl:flex pl-5">
                 <div className="card-blog-left flex-shrink-0 w-full xl:w-40 2xl:w-64 rounded">
-                  <a href="blog-details.html">
-                    {mainImage ? (
-                      <img
-                        className="w-full h-48 2xl:h-64 object-cover rounded mb-6"
-                        src={urlFor(post.mainImage).url()}
-                        alt="Blog Title"
-                      />
-                    ) : (
-                      <img
-                        className="w-full h-48 2xl:h-64 object-cover rounded mb-6"
-                        src={`/api/image?title=${imageTitle}`}
-                        alt="Blog Title"
-                      />
-                    )}
-                  </a>
+                  {mainImage ? (
+                    <img
+                      className="w-full h-48 2xl:h-64 object-cover rounded mb-6"
+                      src={urlFor(post.mainImage).url()}
+                      alt="Blog Title"
+                    />
+                  ) : (
+                    <img
+                      className="w-full h-48 2xl:h-64 object-cover rounded mb-6"
+                      src={`/api/image?title=${imageTitle}`}
+                      alt="Blog Title"
+                    />
+                  )}
                   <div className="flex gap-1 items-center">
                     <img
                       className="w-8 h-8 object-cover rounded-full mr-2"
                       src={author.image._upload.previewImage}
                       alt={author.name}
                     />
-                    <Link href="">
-                      <a className="text-coolGray-900 font-medium text-sm transition duration-500 hover:text-teal-400 capitalize">
-                        {author.name}
-                      </a>
-                    </Link>
+                    <a className="text-coolGray-900 font-medium text-sm transition duration-500 hover:text-teal-400 capitalize">
+                      {author.name}
+                    </a>
                   </div>
                 </div>
 
@@ -119,7 +114,8 @@ export default Index;
 
 export const getStaticProps = async () => {
   const query = `*[_type=="post"]{
-  _id,title,slug,imageTitle,excerpt,categories,mainImage,searchQueries,publishedAt,
+  _id,title,slug,imageTitle,excerpt,categories,mainImage,searchQueries,publishedAt, 
+  "fileUrl": file.asset->url,
   author->{
   name,image
 }

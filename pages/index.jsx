@@ -1,14 +1,19 @@
 import TopSlider from "../components/TopSlider";
-import RecentPosts from "../components/RecentPosts";
 import { sanityClient } from "../lib/sanityConfig";
 import useStateContext from "../context/StateContext";
 import { useEffect } from "react";
 import Head from "next/head";
+import Row from "../components/Rows/Row";
 const Home = ({ posts }) => {
   const { aosFunc } = useStateContext();
   useEffect(() => {
     aosFunc();
   }, []);
+
+  const filter = (filterTitle) =>
+    posts.filter((post) => {
+      return post.searchQueries.includes(filterTitle);
+    });
 
   return (
     <>
@@ -17,7 +22,11 @@ const Home = ({ posts }) => {
       </Head>
       <div className="p-5" data-aos="zoom-in">
         <TopSlider posts={posts} />
-        <RecentPosts posts={posts} />
+        <Row rowId="1" title="React" array={filter("React")} />
+        <Row rowId="2" title="Templates" array={filter("Django")} />
+        <Row rowId="3" title="customHooks" array={filter("Hook")} />
+        <Row rowId="4" title="python" array={filter("python")} />
+        <Row rowId="5" title="mongoDb" array={filter("mongoDb")} />
       </div>
     </>
   );
@@ -27,7 +36,7 @@ export default Home;
 
 export const getStaticProps = async () => {
   const query = `*[_type=="post"] | order(publishedAt desc){
-  _id,title,slug,imageTitle,excerpt,categories,mainImage,publishedAt,
+  _id,title,slug,imageTitle,excerpt,mainImage,publishedAt,hoverTitle,searchQueries,filterTitle,
   author->{
   name,image
 }
