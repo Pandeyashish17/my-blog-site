@@ -1,7 +1,6 @@
 import React from "react";
-// import PortableText from "react-portable-text";
 import BlockContent from "@sanity/block-content-to-react";
-
+import { BiCopyAlt } from "react-icons/bi";
 const serializers = {
   types: {
     h1: (props) => <h1 className="my-5 text-2xl font-bold" {...props} />,
@@ -19,14 +18,22 @@ const serializers = {
           data-language={props.node.language}
           className="bg-[#00002c] my-3 p-3  rounded-xl overflow-x-scroll overflow-y-scroll"
         >
-          <div className="flex gap-1 mb-2 ml-1 ">
-            <div className="bg-red-500 w-3 h-3 rounded-full "></div>{" "}
-            <div className="bg-yellow-500 w-3 h-3 rounded-full "></div>{" "}
-            <div className="bg-green-500 w-3 h-3 rounded-full "></div>{" "}
+          <div className="flex justify-between ">
+            <div className="flex gap-1 mb-2 ml-1 ">
+              <div className="bg-red-500 w-3 h-3 rounded-full "></div>{" "}
+              <div className="bg-yellow-500 w-3 h-3 rounded-full "></div>{" "}
+              <div className="bg-green-500 w-3 h-3 rounded-full "></div>{" "}
+            </div>
+            <div>
+              <BiCopyAlt
+                className="w-6 h-6 text-white cursor-pointer"
+                onClick={() => {
+                  navigator.clipboard.writeText(props.node.code);
+                }}
+              />
+            </div>
           </div>
-          <code className=" text-white break-keep	 ">
-            {props.node.code}
-          </code>
+          <code className=" text-white break-keep	 ">{props.node.code}</code>
         </pre>
       </>
     ),

@@ -1,64 +1,67 @@
-import { Fragment, useState } from "react";
-import Router from "next/router";
-
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
-import useStateContext from "../../context/StateContext";
-
+import Link from "next/link";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 export default function Modal() {
-  const { handleOpen, open } = useStateContext();
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
   const [query, setQuery] = useState("");
   return (
-    <Fragment>
-      <Button onClick={handleOpen} variant="gradient">
-        Search{" "}
-      </Button>
-      <Dialog
-        className="px-6"
-        open={open}
-        animate={{
-          mount: { scale: 1, y: 0 },
-          unmount: { scale: 0.9, y: -100 },
-        }}
+    <>
+      <button
+        className="bg-[#00002C] font-bold uppercase text-sm px-6 text-white py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        onClick={() => setShowModal(true)}
       >
-        <DialogHeader>Search...</DialogHeader>
-        <DialogBody divider>
-          <input
-            type="text"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" Search..."
-            required
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span>Cancel</span>
-          </Button>
-          <Button
-            variant="gradient"
-            c="green"
-            onClick={() => {
-              handleOpen();
-              Router.push(`/blogs?query=${query}`);
-            }}
-          >
-            <span>Search</span>
-          </Button>
-        </DialogFooter>
-      </Dialog>
-    </Fragment>
+        Search{" "}
+      </button>
+      {showModal ? (
+        <>
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative  my-6 mx-auto w-[80vw]">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                  <h3 className="text-3xl font-semibold">Search</h3>
+                </div>
+                {/*body*/}
+                <div className="relative p-6 flex-auto">
+                  <input
+                    type="text"
+                    className="w-full h-full p-2"
+                    placeholder="Search"
+                    onChange={(e) => {
+                      setQuery(e.target.value);
+                    }}
+                  />
+                </div>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
+                    onClick={() => {
+                      if (query != "") {
+                        setShowModal(false);
+                        router.push(`/blogs?query=${query}`);
+                      }
+                    }}
+                  >
+                    Search{" "}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Typography } from "@material-tailwind/react";
 import RecentPostCard from "./RecentPostCard";
 import useStateContext from "../../context/StateContext";
 
@@ -11,7 +10,7 @@ const Index = ({ posts }) => {
 
   return (
     <div className="mt-8" data-aos="zoom-in">
-      <Typography variant="h2">Recent Posts</Typography>
+      <h2 className="text-4xl font-bold">Recent Posts</h2>
       <div>
         <RecentPostCard posts={posts} />
       </div>

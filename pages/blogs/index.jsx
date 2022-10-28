@@ -17,23 +17,23 @@ const Index = ({ posts }) => {
   if (!query) {
     query = "Blog";
   }
-
+  console.log(posts);
   const Posts = posts.filter((post) => {
     return query == "Blog"
       ? post
-      : post.excerpt.toLowerCase().includes(query) ||
-          post.excerpt.match(query) ||
+      : post.searchQueries.includes(query) ||
+          post.excerpt.toLowerCase().includes(query) ||
           post.title.toLowerCase().includes(query) ||
-          post.title.match(query) ||
-          post.imageTitle.toLowerCase().includes(query) ||
-          post.imageTitle.match(query);
-
+          post.imageTitle.toLowerCase().includes(query);
   });
   let length = Posts.length;
   return (
     <>
       <Header query={query} len={length} />
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5" data-aos="zoom-in">
+      <div
+        className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5"
+        data-aos="zoom-in"
+      >
         {Posts.map((post) => {
           const {
             _id,
@@ -48,7 +48,10 @@ const Index = ({ posts }) => {
             author,
           } = post;
           return (
-            <div className="card-blog-style-1 p-5 bg-white relative rounded transition duration-500 hover:shadow-lg" key={_id}>
+            <div
+              className="card-blog-style-1 p-5 bg-white relative rounded transition duration-500 hover:shadow-lg"
+              key={_id}
+            >
               <span className="card-blog-date uppercase text-coolGray-300 font-bold rotate-90 absolute mt-0.5 top-14 -left-7">
                 {moment(publishedAt).format("DD/MM/YYYY")}{" "}
               </span>
@@ -116,7 +119,7 @@ export default Index;
 
 export const getStaticProps = async () => {
   const query = `*[_type=="post"]{
-  _id,title,slug,imageTitle,excerpt,categories,mainImage,publishedAt,
+  _id,title,slug,imageTitle,excerpt,categories,mainImage,searchQueries,publishedAt,
   author->{
   name,image
 }

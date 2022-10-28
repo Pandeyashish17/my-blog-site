@@ -4,9 +4,9 @@ import AOS from "aos";
 
 const Context = createContext();
 export const StateContext = ({ children }) => {
-  const url = "https://ashishblog.vercel.app/";
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  const url = "https://ashisblog.vercel.app/";
+  const [showModal, setShowModal] = useState(false);
+
   const aosFunc = () => {
     AOS.init({
       duration: 300,
@@ -15,7 +15,7 @@ export const StateContext = ({ children }) => {
   };
 
   return (
-    <Context.Provider value={{ handleOpen, open, setOpen, aosFunc, url }}>
+    <Context.Provider value={{ aosFunc, url, showModal, setShowModal }}>
       {children}
     </Context.Provider>
   );

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@material-tailwind/react";
 import useStateContext from "../context/StateContext";
 import { useEffect } from "react";
 
@@ -25,7 +24,7 @@ const Notfound = () => {
             changed or is temporarily unavailable.
           </p>
           <Link href="/">
-            <Button ripple={true}>Back to home</Button>
+            <a>Back to home</a>
           </Link>
         </div>
       </div>

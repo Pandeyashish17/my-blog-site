@@ -4,7 +4,7 @@ import { sanityClient } from "../../lib/sanityConfig";
 import Head from "next/head";
 import useStateContext from "../../context/StateContext";
 import { useRouter } from "next/router";
-const Post = ({ post }) => {
+const Post = ({ post, posts }) => {
   const { aosFunc, url } = useStateContext();
   const Router = useRouter();
   const path = Router.asPath;
@@ -17,7 +17,7 @@ const Post = ({ post }) => {
         <title>{post.title} | ashishBlog</title>
       </Head>
       <div className="px-8" data-aos="zoom-in">
-        <DynamicPostPage post={post} path={path} />
+        <DynamicPostPage post={post} path={path} posts={posts} />
       </div>
     </>
   );
@@ -59,6 +59,12 @@ export const getStaticProps = async ({ params }) => {
     slug: params?.slug,
   });
 
+  const query2 = `*[_type=="post"] | order(publishedAt desc) [0...5]{
+    _id,title,slug,mainImage,publishedAt,
+
+  }`;
+
+  const posts = await sanityClient.fetch(query2);
   if (!post) {
     return {
       notFound: true,
@@ -68,6 +74,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       post,
+      posts,
     },
     revalidate: 60,
   };

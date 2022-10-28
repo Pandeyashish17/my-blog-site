@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import TimeAgo from "react-timeago";
 import { urlFor } from "../../lib/sanityConfig";
-import Link from "next/link"
+import Link from "next/link";
 
 export default function App({ posts }) {
   const Posts = posts.slice(0, 4);
@@ -76,9 +76,14 @@ export default function App({ posts }) {
                           {categories &&
                             categories.map((category, i) => {
                               return (
-                                <span className="m-1 text-blue-500" key={i}>
-                                  {category}
-                                </span>
+                                <Link href={`/blogs?query=${category}`}>
+                                  <span
+                                    className="m-1 text-blue-500 cursor-pointer"
+                                    key={i}
+                                  >
+                                    {category}
+                                  </span>
+                                </Link>
                               );
                             })}
                         </div>
