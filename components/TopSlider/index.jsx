@@ -38,10 +38,8 @@ export default function App({ posts }) {
           {Posts.map((items, i) => {
             const {
               _id,
-              title,
               slug,
               imageTitle,
-              excerpt,
               categories,
               mainImage,
               publishedAt,
@@ -76,11 +74,8 @@ export default function App({ posts }) {
                           {categories &&
                             categories.map((category, i) => {
                               return (
-                                <Link href={`/blogs?query=${category}`}>
-                                  <span
-                                    className="m-1 text-blue-500 cursor-pointer"
-                                    key={i}
-                                  >
+                                <Link href={`/blogs?query=${category}`} key={i}>
+                                  <span className="m-1 text-blue-500 cursor-pointer">
                                     {category}
                                   </span>
                                 </Link>

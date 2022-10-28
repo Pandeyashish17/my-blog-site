@@ -57,7 +57,7 @@ const SideSection = ({ categories, posts }) => {
             posts.map((post) => {
               const { slug, title, mainImage, publishedAt } = post;
               return (
-                <Link href={`/blogs/${slug.current}`}>
+                <Link href={`/blogs/${slug.current}`} key={title}>
                   <div className="card-recent-style flex items-center border-b border-coolGray-300 pb-4 mb-4">
                     <div className="card-recent-image w-24 h-24 rounded overflow-hidden flex-shrink-0">
                       <img

@@ -63,7 +63,7 @@ export default function NavBar() {
               {NavBarData.map((item) => {
                 const { name, path } = item;
                 return (
-                  <Link href={path}>
+                  <Link href={path} key={name}>
                     <li className="text-gray-600 hover:text-blue-600 cursor-pointer">
                       <a>{name}</a>
                     </li>
