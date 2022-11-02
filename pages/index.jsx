@@ -22,11 +22,13 @@ const Home = ({ posts }) => {
       </Head>
       <div className="p-5" data-aos="zoom-in">
         <TopSlider posts={posts} />
-        <Row rowId="1" title="React" array={filter("React")} />
-        <Row rowId="2" title="Templates" array={filter("Django")} />
-        <Row rowId="3" title="customHooks" array={filter("Hook")} />
-        <Row rowId="4" title="python" array={filter("python")} />
-        <Row rowId="5" title="mongoDb" array={filter("mongoDb")} />
+        <div className="p-5">
+          <Row rowId="1" title="React" array={filter("React")} />
+          <Row rowId="2" title="Templates" array={filter("Templates")} />
+          <Row rowId="3" title="customHooks" array={filter("Hook")} />
+        </div>
+        {/* <Row rowId="4" title="python" array={filter("python")} />
+        <Row rowId="5" title="mongoDb" array={filter("mongoDb")} /> */}
       </div>
     </>
   );
@@ -36,7 +38,7 @@ export default Home;
 
 export const getStaticProps = async () => {
   const query = `*[_type=="post"] | order(publishedAt desc){
-  _id,title,slug,imageTitle,excerpt,mainImage,publishedAt,hoverTitle,searchQueries,filterTitle,
+  _id,title,slug,imageTitle,excerpt,mainImage,publishedAt,hoverTitle,searchQueries,filterTitle,categories,
   author->{
   name,image
 }

@@ -75,7 +75,7 @@ export default function App({ posts }) {
                             categories.map((category, i) => {
                               return (
                                 <Link href={`/blogs?query=${category}`} key={i}>
-                                  <span className="m-1 text-blue-500 cursor-pointer">
+                                  <span className="m-1 text-bz cursor-pointer">
                                     {category}
                                   </span>
                                 </Link>

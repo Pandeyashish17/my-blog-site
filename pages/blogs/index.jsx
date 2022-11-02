@@ -115,7 +115,6 @@ export default Index;
 export const getStaticProps = async () => {
   const query = `*[_type=="post"]{
   _id,title,slug,imageTitle,excerpt,categories,mainImage,searchQueries,publishedAt, 
-  "fileUrl": file.asset->url,
   author->{
   name,image
 }

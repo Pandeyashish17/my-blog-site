@@ -9,6 +9,7 @@ const index = ({ post, path, posts }) => {
     _id,
     title,
     slug,
+    fileUrl,
     body,
     imageTitle,
     excerpt,
@@ -28,7 +29,7 @@ const index = ({ post, path, posts }) => {
       <section className="blog-area z-20  relative">
         <div className="container">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <PostDetails body={body} />
+            <PostDetails body={body} fileUrl={fileUrl} />
             <SideSection categories={categories} posts={posts} />
           </div>
         </div>

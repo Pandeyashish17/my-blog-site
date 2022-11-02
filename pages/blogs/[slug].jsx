@@ -52,7 +52,8 @@ export const getStaticProps = async ({ params }) => {
        _id,title,slug,imageTitle,excerpt,body,categories,mainImage,publishedAt,
   author->{
   name,image
-}
+},  "fileUrl": file.asset->url,
+
     }`;
 
   const post = await sanityClient.fetch(query, {

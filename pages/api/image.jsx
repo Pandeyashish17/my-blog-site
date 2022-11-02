@@ -18,32 +18,23 @@ export default function handler(req) {
       (
         <div
           style={{
-            backgroundColor: "skyblue",
-            backgroundSize: "150px 150px",
-            height: "100%",
+            fontSize: 40,
+            color: "white",
+            background: "#00002C",
             width: "100%",
+            height: "100%",
+            padding: "50px 200px",
             display: "flex",
-            textAlign: "center",
-            alignItems: "center",
-            justifyContent: "center",
             flexDirection: "column",
-            flexWrap: "nowrap",
+            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <div
-            style={{
-              fontSize: 60,
-              fontStyle: "normal",
-              letterSpacing: "-0.025em",
-              color: "black",
-              marginTop: 30,
-              padding: "0 120px",
-              lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            {title}
-          </div>
+          <div tw="bg-red-500 rounded-full w-10 h-10"></div>
+          <div tw="bg-yellow-500 rounded-full w-10 h-10"></div>
+          <div tw="bg-green-500 rounded-full w-10 h-10"></div>
+          {title}
         </div>
       ),
       {
