@@ -1,6 +1,8 @@
 import react, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import useStateContext from "../context/StateContext";
+import * as EmailValidator from "email-validator";
+
 import useWindowSize from "../customHook/useWindowSize";
 import { contactDetail } from "../data/contactDetails";
 const Contact = () => {
@@ -24,7 +26,8 @@ const Contact = () => {
     if (
       commentData.message.length == 0 ||
       commentData.email.length == 0 ||
-      commentData.name.length == 0
+      commentData.name.length == 0 ||
+      !EmailValidator.validate(commentData.email)
     ) {
       setError(true);
     } else {
@@ -144,7 +147,7 @@ const Contact = () => {
             <div className="px-6 py-12 sm:p-12">
               {sent ? (
                 <h1>
-               {`   Thank you for sending this message.. I'll be sure to text you back`}
+                  {`   Thank you for sending this message.. I'll be sure to text you back`}
                 </h1>
               ) : (
                 <>
@@ -247,7 +250,7 @@ const Contact = () => {
                             <span>Send</span>
                           )}
                         </button>
-                        {error ? <h1>fill up the form properly</h1> : null}
+                        {error ? <h1 className="text-red-500 mt-3">fill up the form properly</h1> : null}
                       </div>
                     </div>
                   </form>
